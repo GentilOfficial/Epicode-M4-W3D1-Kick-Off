@@ -1,6 +1,14 @@
 const api = "https://striveschool-api.herokuapp.com/api/deezer/search"
 
-const defaultArtist = "eminem"
+const getLastArtist = () => {
+  return localStorage.getItem("artist")
+}
+
+const setLastArtist = (artist) => {
+  localStorage.setItem("artist", artist)
+}
+
+const defaultArtist = getLastArtist() ?? "eminem"
 
 const clearArtistSection = () => {
   artistSection.innerHTML = ""
@@ -54,6 +62,7 @@ const showArtistTracks = (tracks, artist) => {
 }
 
 const searchArtist = (artist = defaultArtist) => {
+  setLastArtist(artist)
   clearArtistSection()
   getTracks(artist).then(({ data }) => showArtistTracks(data, artist))
 }

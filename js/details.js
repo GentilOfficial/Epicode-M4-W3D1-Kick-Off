@@ -39,7 +39,7 @@ const generateTrackListItem = ({ title, duration }) => {
   return listItem
 }
 
-const populareTracksList = (tracks) => {
+const populateTracksList = (tracks) => {
   hideSpinner()
   tracks.forEach((track) => {
     tracksList.appendChild(generateTrackListItem(track))
@@ -51,5 +51,5 @@ window.onload = () => {
     populateArtistName(artistName)
   }
   showSpinner()
-  getArtistDetails(artistId).then(({ data }) => populareTracksList(data))
+  getArtistDetails(artistId).then(({ data }) => populateTracksList(data))
 }
